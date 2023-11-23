@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aunabenefits",
+  "info": {
+    "singularName": "aunabenefit",
+    "pluralName": "aunabenefits",
+    "displayName": "aunabenefit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "url_image": {
+      "type": "string"
+    }
+  }
+}
