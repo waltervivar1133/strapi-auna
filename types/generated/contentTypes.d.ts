@@ -710,29 +710,40 @@ export interface ApiAunabenefitAunabenefit extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
+export interface ApiProgramDetailBandProgramDetailBand
+  extends Schema.CollectionType {
+  collectionName: 'program_detail_bands';
   info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'product';
-    description: '';
+    singularName: 'program-detail-band';
+    pluralName: 'program-detail-bands';
+    displayName: 'program-detail-band';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    icon: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+        maxLength: 50;
+      }> &
+      Attribute.DefaultTo<'oncosalud'>;
+    title: Attribute.String;
+    description: Attribute.String;
+    button_text: Attribute.String & Attribute.Required;
+    button_href: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product.product',
+      'api::program-detail-band.program-detail-band',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product.product',
+      'api::program-detail-band.program-detail-band',
       'oneToOne',
       'admin::user'
     > &
@@ -757,7 +768,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::aunabenefit.aunabenefit': ApiAunabenefitAunabenefit;
-      'api::product.product': ApiProductProduct;
+      'api::program-detail-band.program-detail-band': ApiProgramDetailBandProgramDetailBand;
     }
   }
 }
