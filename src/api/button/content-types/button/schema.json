@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "buttons",
+  "info": {
+    "singularName": "button",
+    "pluralName": "buttons",
+    "displayName": "button"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string"
+    },
+    "program_detail_band": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::program-detail-band.program-detail-band",
+      "mappedBy": "button"
+    }
+  }
+}

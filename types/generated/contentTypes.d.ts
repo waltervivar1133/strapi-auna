@@ -710,6 +710,42 @@ export interface ApiAunabenefitAunabenefit extends Schema.CollectionType {
   };
 }
 
+export interface ApiButtonButton extends Schema.CollectionType {
+  collectionName: 'buttons';
+  info: {
+    singularName: 'button';
+    pluralName: 'buttons';
+    displayName: 'button';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    href: Attribute.String;
+    program_detail_band: Attribute.Relation<
+      'api::button.button',
+      'oneToOne',
+      'api::program-detail-band.program-detail-band'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::button.button',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::button.button',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProgramDetailBandProgramDetailBand
   extends Schema.CollectionType {
   collectionName: 'program_detail_bands';
@@ -717,6 +753,7 @@ export interface ApiProgramDetailBandProgramDetailBand
     singularName: 'program-detail-band';
     pluralName: 'program-detail-bands';
     displayName: 'program-detail-band';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -731,8 +768,11 @@ export interface ApiProgramDetailBandProgramDetailBand
       Attribute.DefaultTo<'oncosalud'>;
     title: Attribute.String;
     description: Attribute.String;
-    button_text: Attribute.String & Attribute.Required;
-    button_href: Attribute.String & Attribute.Required;
+    button: Attribute.Relation<
+      'api::program-detail-band.program-detail-band',
+      'oneToOne',
+      'api::button.button'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -768,6 +808,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::aunabenefit.aunabenefit': ApiAunabenefitAunabenefit;
+      'api::button.button': ApiButtonButton;
       'api::program-detail-band.program-detail-band': ApiProgramDetailBandProgramDetailBand;
     }
   }

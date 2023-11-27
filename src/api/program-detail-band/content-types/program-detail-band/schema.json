@@ -4,7 +4,8 @@
   "info": {
     "singularName": "program-detail-band",
     "pluralName": "program-detail-bands",
-    "displayName": "program-detail-band"
+    "displayName": "program-detail-band",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,13 +25,11 @@
     "description": {
       "type": "string"
     },
-    "button_text": {
-      "type": "string",
-      "required": true
-    },
-    "button_href": {
-      "type": "string",
-      "required": true
+    "button": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::button.button",
+      "inversedBy": "program_detail_band"
     }
   }
 }
