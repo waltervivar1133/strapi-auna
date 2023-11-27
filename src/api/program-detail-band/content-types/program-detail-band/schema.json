@@ -30,6 +30,12 @@
       "relation": "oneToOne",
       "target": "api::button.button",
       "inversedBy": "program_detail_band"
+    },
+    "key": {
+      "type": "string",
+      "regex": "^(ALL|ONCOSALUD)$",
+      "default": "ALL",
+      "required": true
     }
   }
 }

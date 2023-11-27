@@ -773,6 +773,7 @@ export interface ApiProgramDetailBandProgramDetailBand
       'oneToOne',
       'api::button.button'
     >;
+    key: Attribute.String & Attribute.Required & Attribute.DefaultTo<'ALL'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
